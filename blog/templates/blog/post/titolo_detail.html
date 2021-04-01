@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ titoli.codtit2 }}{% endblock %}
+{% block content %}
+
+<form action="http://127.0.0.1:8000/modificatitolo" method="POST">
+  {% csrf_token %}
+  <br>
+  <br>
+  <input type="text" id="pk" name="pk" value="{{ titoli.pk }}" readonly>
+  <input type="text" id="codtit2" name="codtit2" value="{{ titoli.codtit2 }}" readonly>
+  <input type="text" id="codslugtit2" name="codslugtit2" value="{{ titoli.codslugtit2 }}" readonly>
+  <input type="text" id="autor" name="autor" value="{{ titoli.codauthortit2 }}" readonly>
+  <input type="text" id="isin" name="isin" value="{{ titoli.codisintit2 }}">
+  <input type="text" id="body" name="body" value="{{ titoli.codbodytit2 }}">
+  <p class="date">
+    Published {{ titoli.codpublishtit2 }} by {{ titoli.codauthortit2 }}
+  </p>
+  
+  <a href="http://127.0.0.1:8000/modificatitolo" method="POST">
+    <input type="submit" class="btn btn-primary btn-lg" value="Modifica  titolo" />
+  </a>
+</form>
+
+<form action="http://127.0.0.1:8000/cancellatitolo" method="POST">
+  {% csrf_token %}
+  <br>
+  <br>
+  <input type="text" id="pk" name="pk" value="{{ titoli.pk }}" hidden>
+
+<a href="http://127.0.0.1:8000/cancellatitolo" method="POST">
+  <input type="submit" class="btn btn-primary btn-lg" value="Cancella  titolo" />
+</a>
+</form>
+
+{{ post.body|linebreaks }}
+{% endblock %}

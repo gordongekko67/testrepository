@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% block title %}My Titoli{% endblock %}
+{% block content %}
+<h1>My Titoli intestazione titoli prova sarahhhhh</h1>
+{% for post in posts %}
+
+<h1> {{ post.codtit2 }}</h1>
+<h1> {{ post.codisintit2 }}</h1>
+<h1>{{posts}}</h1>
+
+<p>
+  <a href="{% url " blog:post_share" post.id %}">
+    Share this post
+  </a>
+</p>
+
+<h1>
+
+  <a href="{{ post.get_absolute_url }}">{{post.codtit2}}</a>
+  <a href="{{ titoli.get_absolute_url }}"></a>
+
+  {{ post.codtit2 }}
+  {{ post.codisintit2 }}
+
+  </a>
+
+</h1>
+
+
+{{ post.codtit2 }}
+{{ post.codisintit2 }}
+<button type="button" class="btn btn-primary">Primary</button>
+
+<p class="date">
+  Published {{ post.codpublishtit2 }} by {{ post.codauthortit2 }}
+</p>
+{{ post.body|truncatewords:30|linebreaks }}
+{% endfor %}
+
+{% include "pagination.html" with page=page_obj %}
+{% endblock %}

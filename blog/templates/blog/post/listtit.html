@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block title %}My Titoli{% endblock %}
+{% block content %}
+  <h1>My Titoli</h1>
+  {% for titol in titoli %}
+    <h2>
+      <a href="{{ titol.get_absolute_url }}">
+        {{ titol.codtit }}
+        {{ titol.codisintit }}
+      </a>
+    </h2>
+    <p class="date">
+      Published {{ post.codpublishtit }} by {{ post.codmintit }}  {{ post.codmaxtit }}
+    </p>
+    {{ post.codbodytit|truncatewords:30|linebreaks }}
+  {% endfor %}
+  
+  {% include "pagination.html" with page=page_obj %}
+{% endblock %}
